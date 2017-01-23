@@ -9,67 +9,62 @@ using System.Windows;
 
 namespace ConsoleApplication6
 {
-    class shapes
-    {
-        private int width, height;
-        public void rectangle(int width, int height)
-        {
-            this.width = width;
-            this.height = height;
-        }
+    class execute
+    { 
 
-        public void square(int width)
+        static void display(int x,int y,int width,int height,string user)
         {
-            this.width = width;
-        }
-
-        public void circle(int width)
-        {
-            this.width = width;
-        }
-        public void display(string user, int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write("The size of the {0} is {1}x{2}",user, width, height);
-        }
-
+            for (int i = 0; i < y; i++)
+            {
+                Console.WriteLine("");
+                for (int j = 0; j < x; j++)
+                {
+                    Console.WriteLine(" ");
+                }
+              }
+                Console.WriteLine("{0} is with {1}x{2} size", user, width, height);
+            }
+        
         static void Main(string[] args)
-        {
-            int x, y,width,height;
+    {
+            int x, y, width, height;
             Console.WriteLine("Enter the location");
             x = Convert.ToInt32(Console.ReadLine());
             y = Convert.ToInt32(Console.ReadLine());
-            shapes input = new shapes();
+            
             Console.WriteLine("Enter the shape to be added");
             Console.WriteLine("Rectangle,Circle,Square");
             string userinput = Console.ReadLine();
             if (userinput == "Rectangle")
             {
-
+                
                 Console.WriteLine("Enter the width and height");
                 width = (Convert.ToInt32(Console.ReadLine()));
-                height=(Convert.ToInt32(Console.ReadLine()));
-                input.rectangle(width, height);
+                height = (Convert.ToInt32(Console.ReadLine()));
+                Rectangle shape = new Rectangle(width,height);
+                display(x, y, width, height, userinput);
             }
 
             if (userinput == "Circle")
             {
 
                 Console.WriteLine("Enter the width");
-                width=(Convert.ToInt32(Console.ReadLine()));
-                input.circle(width);
+                width = (Convert.ToInt32(Console.ReadLine()));
+                Circle shape1=new Circle(width);
+                display(x, y, width,0, userinput);
             }
 
             if (userinput == "Square")
             {
 
                 Console.WriteLine("Enter the width");
-                height=(Convert.ToInt32(Console.ReadLine()));
-                input.square(height);
+                height = (Convert.ToInt32(Console.ReadLine()));
+                Square shape2=new Square(height);
+                display(x, y,0, height, userinput);
             }
-            input.display(userinput, x, y);
+            
             Console.ReadKey();
+
         }
     }
-
 }
